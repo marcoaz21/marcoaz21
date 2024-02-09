@@ -19,7 +19,6 @@ int menu();
 void load_people(dati per[]); 
 void near(dati per[]);
 void print_list(dati per[]);
-void print_persona(char nome[NAME][LET],  char cognome[NAME][LET], char data[NAME][LET], int i);
 void modify(dati per[]);
 void delet(dati per[]);
 void fine();
@@ -70,6 +69,7 @@ int edit_name(char name[LET], char new_name[LET], char new_cognome[LET], unsigne
   {
     strcpy(per[pos].nome,new_name);
     strcpy(per[pos].cognome,new_cognome);
+    per[pos].data = new_data;
   }
 
   return 0;
@@ -91,10 +91,13 @@ int delete_name(char name[LET],dati per[NAME])
 
   clear();
   int pos=get_index(name,per);
- if(pos!=-1) 
+ if(pos!=-1)
+ {
     per[pos].nome[0]='\0';
-      per[pos].cognome[0]='\0';
-        per[pos].data='\0';
+    per[pos].cognome[0]='\0';
+    per[pos].data='\0';
+ }
+    
 
    return pos;
 }
